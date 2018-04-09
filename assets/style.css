@@ -1,0 +1,20 @@
+* { box-sizing: border-box; }
+
+/* force scroll bar */
+html { overflow-y: scroll; }
+
+body { font-family: sans-serif; }
+
+/* ---- grid ---- */
+
+.grid-item { width: 25%; 
+              height: 25%;
+              background-color: pink; }
+
+.grid-item--width2 { width: 25%;
+                      height: 50%;
+                      background-color: pink;  }  
+
+
+.footer { text-align: right;
+                }
