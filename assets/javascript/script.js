@@ -2,8 +2,6 @@
 
 
 
-
-
   window.onload = function() {
 
     var searchThis =  [ $("#userInput").val(''),
@@ -77,9 +75,24 @@
   
 };
 
-$("#submitBtn").on("click", function(event) {
-  event.preventDefault();
-  
+$("#pickRandomPark").on("click", function(event) {
+
+  var randomSelect=Math.floor(Math.random() * 60);
+console.log(randomSelect);
+var parkCodes = ["acad","npsa","arch","badl","bibe","bisc","blca","brca","cany","care","cave","chis","cong","crla","cuva", "deva","dena","drto","ever","gaar","jeff","glac","glba","grca","grta","grba","grsa","grsm","gumo","hale","havo","hosp","isro","jotr","katm","kefj","seki","kova","lacl","lavo","maca","meve","mora","noca","olym","pefo","pinn","redw","romo","sagu","shen","thro","viis","voya","wica","wrst","yell","yose","zion"];
+  var selectedCode=parkCodes[randomSelect]
+var queryQRL = "https://developer.nps.gov/api/v1/parks?parkCode=" + selectedCode + "&api_key=7wQNlZMqMhlH0js2AdSZsiMoge4n3Z0ud2rZVlfW";
+console.log(queryQRL);
+var pickRandom = function randomSelect() {
+    for (var i = 0; i < parkcodes.length; i++) {
+    var randomSelect=Math.floor(Math.random() * 60); 
+    var selectedCode=parkCodes[randomSelect]
+var queryQRL = "https://developer.nps.gov/api/v1/parks?parkCode" + selectedCode + "&api_key=7wQNlZMqMhlH0js2AdSZsiMoge4n3Z0ud2rZVlfW";
+console.log(queryQRL);
+var selectedCode=parkCodes[randomSelect] 
+
+    }
+  }
     
     });
 
