@@ -15,15 +15,18 @@
         crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://unpkg.com/packery@2/dist/packery.pkgd.min.js"></script>
-    <script src="assets/javascript/packery.pkgd.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     
-    <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Permanent+Marker" rel="stylesheet">
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+ integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+ crossorigin="anonymous"></script>
+
+
+<script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script> 
+<link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Permanent+Marker" rel="stylesheet">
 
 </head>
-
-
 <body>
  
     <div class="container">
@@ -39,11 +42,6 @@
 <div class="col-sm-3"></div>
 
 </div></div></div>
-
-
-    
- 
-
 
 <!-- END OF HEADER/LOGO SECTION -->
 <!-- MENU SECTION -->
@@ -97,18 +95,13 @@
             
 <div class="col-sm-3"></div>
                
-</div></div></div></div>
-
-
+</div></div></div>
 <br>
 
 <div class="container">
 <div class="row">
 <div class="col-sm-3"></div>
-    
-    
 <div class="col-sm-6">
-    
     
 <iframe width="550px;" height="325px;"
 frameborder="0" style="border:0"
@@ -119,29 +112,23 @@ src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef
 </div></div></div>
 
 
-
 <div class="container">
         <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
        
-               <nav class="navbar navbar-light bg-clear">
-                       <a class="navbar-brand" href="#"></a>
-                       </nav>
+ <nav class="navbar navbar-light bg-clear">
+ <a class="navbar-brand" href="#"></a>
+ </nav>
                                    
-                       <nav class="navbar navbar-light bg-light">
-                       <form class="form-inline">
-                       <input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Type Park Here" aria-label="Search">
-                       <button class="btn btn-outline-success my-2 my-sm-0" id="submitBtn" type="submit">Search
-                       </button></form></nav>
-                   
-                                   
-                       </div></div>
-                       </div></div>
-
-
-
-
+<nav class="navbar navbar-light bg-light">
+<form class="form-inline">
+<input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Type Park Here" aria-label="Search">
+<button class="btn btn-outline-success my-2 my-sm-0" id="submitBtn" type="submit">Search
+</button></form></nav>
+                                               
+</div></div></div>
+                      
 <br>
 <div class="container">
 <div class="row">
@@ -149,71 +136,82 @@ src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef
     <div class="col-sm-6">
     <div class="form-group">
     <label for="parks" class="col-sm-6 control-label" style="text-align: center;">Browse Parks</label>    
-    <select id="state" class="form-control">
-            <option>Acadia</option>
-            <option>American Samoa</option>
-            <option>Arches</option>
-            <option>Badlands</option>
-            <option>Big Bend</option>
-            <option>Biscayne</option>
-            <option>Black Canyon of the Gunnison</option>
-            <option>Bryce Canyon</option>
-            <option>Canyonlands</option>
-            <option>Capitol Reef</option>
-            <option>Carlsbad Caverns *</option>
-            <option>Channel Islands</option>
-            <option>Congaree</option>
-            <option>Crater Lake</option>
-            <option>Cuyahoga Valley</option>
-            <option>Death Valley</option>
-            <option>Denali</option>
-            <option>Dry Tortugas</option>
-            <option>Everglades</option>
-            <option>Gates of the Arctic</option>
-            <option>Gateway Arch</option>
-            <option>Glacier</option>
-            <option>Glacier Bay</option>
-            <option>Grand Canyon *</option>
-            <option>Grand Teton</option>
-            <option>Great Basin</option>
-            <option>Great Sand Dunes</option>
-            <option>Great Smoky Mountains</option>
-            <option>Guadalupe Mountains</option>
-            <option>Haleakalā</option>
-            <option>Hawaiʻi Volcanoes</option>
-            <option>Hot Springs</option>
-            <option>Isle Royale</option>
-            <option>Joshua Tree</option>
-            <option>Katmai</option>
-            <option>Kenai Fjords</option>
-            <option>Kings Canyon</option>
-            <option>Kobuk Valley</option>
-            <option>Lake Clark</option>
-            <option>Lassen Volcanic</option>
-            <option>Mammoth Cave</option>
-            <option>Mesa Verde*</option>
-            <option>Mount Rainier</option>
-            <option>North Cascades</option>
-            <option>Olympic</option>
-            <option>Petrified Forest</option>
-            <option>Pinnacles</option>
-            <option>Redwood *</option>
-            <option>Rocky Mountain</option>
-            <option>Saguaro</option>
-            <option>Sequoia</option>
-            <option>Shenandoah</option>
-            <option>Theodore Roosevelt</option>
-            <option>Virgin Islands</option>
-            <option>Voyageurs</option>
-            <option>Wind Cave</option>
-            <option>Wrangell–St. Elias *</option>
-            <option>Yellowstone</option>
-            <option>Yosemite *</option>
-            <option>Zion</option>
+    <select id="browseParkOption" class="form-control">
+            <option id="parkOpt1">Acadia</option>
+            <option id="parkOpt2">American Samoa</option>
+            <option id="parkOpt3">Arches</option>
+            <option id="parkOpt4">Badlands</option>
+            <option id="parkOpt5">Big Bend</option>
+            <option id="parkOpt6">Biscayne</option>
+            <option id="parkOpt7">Black Canyon of the Gunnison</option>
+            <option id="parkOpt8">Bryce Canyon</option>
+            <option id="parkOpt9">Canyonlands</option>
+            <option id="parkOpt10">Capitol Reef</option>
+            <option id="parkOpt11">Carlsbad Caverns *</option>
+            <option id="parkOpt12">Channel Islands</option>
+            <option id="parkOpt13">Congaree</option>
+            <option id="parkOpt14">Crater Lake</option>
+            <option id="parkOpt15">Cuyahoga Valley</option>
+            <option id="parkOpt16">Death Valley</option>
+            <option id="parkOpt17">Denali</option>
+            <option id="parkOpt18">Dry Tortugas</option>
+            <option id="parkOpt19">Everglades</option>
+            <option id="parkOpt20">Gates of the Arctic</option>
+            <option id="parkOpt21">Gateway Arch</option>
+            <option id="parkOpt22">Glacier</option>
+            <option id="parkOpt23">Glacier Bay</option>
+            <option id="parkOpt24">Grand Canyon *</option>
+            <option id="parkOpt25">Grand Teton</option>
+            <option id="parkOpt26">Great Basin</option>
+            <option id="parkOpt27">Great Sand Dunes</option>
+            <option id="parkOpt28">Great Smoky Mountains</option>
+            <option id="parkOpt29">Guadalupe Mountains</option>
+            <option id="parkOpt30">Haleakalā</option>
+            <option id="parkOpt31">Hawaiʻi Volcanoes</option>
+            <option id="parkOpt32">Hot Springs</option>
+            <option id="parkOpt33">Isle Royale</option>
+            <option id="parkOpt34">Joshua Tree</option>
+            <option id="parkOpt35">Katmai</option>
+            <option id="parkOpt36">Kenai Fjords</option>
+            <option id="parkOpt37">Kings Canyon</option>
+            <option id="parkOpt38">Kobuk Valley</option>
+            <option id="parkOpt39">Lake Clark</option>
+            <option id="parkOpt40">Lassen Volcanic</option>
+            <option id="parkOpt41">Mammoth Cave</option>
+            <option id="parkOpt42">Mesa Verde*</option>
+            <option id="parkOpt43">Mount Rainier</option>
+            <option id="parkOpt44">North Cascades</option>
+            <option id="parkOpt45">Olympic</option>
+            <option id="parkOpt46">Petrified Forest</option>
+            <option id="parkOpt47">Pinnacles</option>
+            <option id="parkOpt48">Redwood *</option>
+            <option id="parkOpt49">Rocky Mountain</option>
+            <option id="parkOpt50">Saguaro</option>
+            <option id="parkOpt51">Sequoia</option>
+            <option id="parkOpt52">Shenandoah</option>
+            <option id="parkOpt53">Theodore Roosevelt</option>
+            <option id="parkOpt54">Virgin Islands</option>
+            <option id="parkOpt55">Voyageurs</option>
+            <option id="parkOpt56">Wind Cave</option>
+            <option id="parkOpt57">Wrangell–St. Elias *</option>
+            <option id="parkOpt58">Yellowstone</option>
+            <option id="parkOpt59">Yosemite *</option>
+            <option id="parkOpt60">Zion</option>
+        </select>
+        <div class="col-sm-3">
+        
+            <button type="submit" id="browseParkBtn" class="btn btn-primary btn-block">Search</button>
 
-    </select>
-    </div></div></div> <!-- /.form-group -->
+    </div></div></div></div>
+    
+<div class="container">
+<div class="row">
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
 
+<div id="insertParkInfoHere"></div>
+
+</div></div></div>
 
 <!-- REGISTRATION FORM - INCASE WE DECIDE TO USE IT -->
 
@@ -249,8 +247,9 @@ src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef
             <input type="date" id="birthDate" class="form-control">
             </div>
          
-         </form></div>
-         </div></div>
+         </form>
+        
+        </div></div></div>
 
         <div class="row">
         <div class="col-sm-3"></div>
@@ -260,20 +259,21 @@ src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef
         <input type="checkbox"> I accept <a href="#">terms</a>
         <button type="submit" id="submitGoFire" class="btn btn-primary btn-block">Register</button>
         <button type="submit" id="pickRandomPark" class="btn btn-primary btn-block">Pick A Random Park</button>
-        </div></form>
-        </div> 
 
+        </form>
 
-     
-  <!-- FOOTER -->
+        </div></div></div> 
+
+<!-- FOOTER -->
 <div class="container">
   <div class="row">
   <div class="col-sm-3"></div>    
   <div class="col-sm-9">
   <footer id="footer">
   &copy; 2018 Team JSON & The VARgonauts UNC Coding Bootcamp
- </footer></div>
- </div></div>
+ </footer>
+
+ </div></div></div>
 
 <br> 
 <script src="assets/javascript/script.js"></script>
