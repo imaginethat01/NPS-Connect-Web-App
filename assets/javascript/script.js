@@ -29,13 +29,88 @@ $(document).ready(function () {
       $('#insertParkInfoHere').empty();
       selectedParkName = response.data[0].fullName;
       console.log('the random park is: ' + selectedParkName );
-      $('#insertParkInfoHere').append('<h2 id="responseTitle">' + "Name of National Park: " + '</h2><span id="responseInfo">' + response.data[0].fullName + '</span>');
-      $('#insertParkInfoHere').append('<h2 id="responseTitle">' + "Location: " + '</h2><span id="responseInfo">' + response.data[0].states + '</span>');
-      $('#insertParkInfoHere').append('<h2 id="responseTitle">' + "Latitude & Longitude: " + '</h2><span id="responseInfo">' + response.data[0].latLong + '</span>');
-      $('#insertParkInfoHere').append('<h2 id="responseTitle">' + "Description: " + '</h2><span id="responseInfo">' + response.data[0].description + '</span>');
-      $('#insertParkInfoHere').append('<h2 id="responseTitle">' + "Weather: " + '</h2><span id="responseInfo">' + response.data[0].weatherInfo + '</span>');
+      $('#insertParkInfoHere').append('<h2>' + "Name of National Park: " + '</h2><span id="responseInfo">' + response.data[0].fullName + '</span>');
+      $('#insertParkInfoHere').append('<h2>' + "Location: " + '</h2><span id="responseInfo">' + response.data[0].states + '</span>');
+      $('#insertParkInfoHere').append('<h2>' + "Latitude & Longitude: " + '</h2><span id="responseInfo">' + response.data[0].latLong + '</span>');
+      $('#insertParkInfoHere').append('<h2>' + "Description: " + '</h2><span id="responseInfo">' + response.data[0].description + '</span>');
+      $('#insertParkInfoHere').append('<h2>' + "Weather: " + '</h2><span id="responseInfo">' + response.data[0].weatherInfo + '</span>');
     });
   });
+
+  $("#browseStateBtn").on("click", function (event) {
+    //prevents on click from resorting to default state
+    event.preventDefault();
+    //get value from state dropdown
+    // var selectedState = $('#browseStateOption option:selected.val()').text();
+    var selectedState = $('#browseStateOption').val()
+    console.log(selectedState);
+    //stateCode object  ---not needed right now
+    // var stateCodeObject = {
+    //   "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansa": "AR", "California": "CA", "Colorado": "CO", "Conneticut": "CT", "Delaware": "DE", "Florida": "FL", "Georgia": "GA", "Hawaii": "HI", "Idaho": "ID", "Illinois": "IL", "Indiana": "IN", "Iowa": "IA", "Kansas": "KS", "Kentucky": "KY", "Louisiana": "LA", "Maine": "ME", "Maryland": "MD", "Massachusetts": "MA", "Michigan": "MI", "Minnesota": "MN", "Mississippi": "MS", "Missouri": "MO", "Montana": "MT", "Nebraska": "NE", "Nevada": "NV", "New Hampshire": "NH", "New Jersey": "NJ", "New Mexico": "NM", "New York": "NY", "North Carolina": "NC", "North Dakota": "ND", "Ohio": "OH", "Oklahoma": "OK", "Oregon": "OR", "Pennsylvania": "PA", "Rhode Island": "RI", "South Carolina": "SC", "South Dakota": "SD", "Tennessee": "TN", "Texas": "TX", "Utah": "UT", "Vermont": "VT", "Virginia": "VA", "Washington": "WA", "West Virginia": "WV", "Wisconson": "WI", "Wyoming": "WY"
+    // }
+    // API QUERY FOR STATE CODES FROM NPS
+    $.ajax({
+      url: "https://developer.nps.gov/api/v1/parks?stateCode=" + selectedState + "&api_key=7wQNlZMqMhlH0js2AdSZsiMoge4n3Z0ud2rZVlfW",
+      method: "GET"
+    }).done(function (response) {
+      $('#insertParkInfoHere').empty();
+
+      console.log("response ", response);
+
+      let array = response.data;
+      console.log("array ", array);
+      array.forEach(obj => {
+        console.log(obj);
+
+        // let index = obj.indexOf(array);
+
+        console.log('obj ', obj);
+
+        let parkObj = {
+          name: obj.fullName,
+          description: obj.description
+        }
+        console.log
+        html = 
+        `
+        <h2 class="respsTitle">${parkObj.name}</h2>
+        <h3 class="respsTitle">Description: </h3><span class="respsInfo">'${parkObj.description}</span>
+        `;
+
+
+        $('#insertParkInfoHere').append(html);
+      });
+    })
+  });
+
+
+  $("#browseParkBtn").on("click", function (event) {
+    //prevents on click from resorting to default state
+    event.preventDefault();
+
+    //get value from state dropdown
+    // var selectedState = $('#browseStateOption option:selected.val()').text();
+    var selectedPark = $('#browseParkOption').val()
+    // console.log(selectedPark);
+    //CLEAR PARK INFO SECTION
+
+    // API QUERY FOR Park CODES FROM NPS
+    $.ajax({
+      url: "https://developer.nps.gov/api/v1/parks?parkCode=" + selectedPark + "&api_key=7wQNlZMqMhlH0js2AdSZsiMoge4n3Z0ud2rZVlfW",
+      method: "GET"
+    }).done(function (response) {
+      console.log(response);
+
+      // forEach to bring up more than 1 park
+      $('#insertParkInfoHere').empty();
+      $('#insertParkInfoHere').append('<h2 id="responseTitle">' + response.data[0].fullName + '</h2>');
+      $('#insertParkInfoHere').append('<h3 id="responseTitle">' + "Location: " + '</h3><span id="responseInfo">' + response.data[0].states + '</span>');
+      $('#insertParkInfoHere').append('<h3 id="responseTitle">' + "Latitude & Longitude: " + '</h3><span id="responseInfo">' + response.data[0].latLong + '</span>');
+      $('#insertParkInfoHere').append('<h3 id="responseTitle">' + "Description: " + '</h3><span id="responseInfo">' + response.data[0].description + '</span>');
+      $('#insertParkInfoHere').append('<h3 id="responseTitle">' + "Weather: " + '</h3><span id="responseInfo">' + response.data[0].weatherInfo + '</span>');
+    })
+  });
+
 
 
           var config = {
