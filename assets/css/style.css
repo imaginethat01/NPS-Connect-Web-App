@@ -66,13 +66,18 @@ select#state.form-control {
 
 #insertParkInfoHere { 
   overflow: auto;
-  width: auto;
-  height: 350px;
+
+  max-height: 500px;
+  max-width:  700px;
   background-color: #c5a56d;
   color: #070707;
   border: 2px solid #492202;
   border-radius: 10px;
   opacity: 0.7;
+  position: relative;
+  top: 5%;
+  padding-block-end: 5%;
+
   }
 
   ::-webkit-scrollbar {
@@ -95,6 +100,7 @@ select#state.form-control {
 ::-webkit-scrollbar-thumb:hover  {
       background: #333; 
   }
+
 
 
 /* font-family: 'Roboto', sans-serif;
