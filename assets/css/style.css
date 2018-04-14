@@ -103,10 +103,7 @@ h9 {
 
 #insertParkInfoHere { 
   overflow: auto;
-
-  max-height: 500px;
-  max-width:  700px;
-  min-width: 600px;
+  max-height: 550px;
   background-color: #c5a56d;
   color: #070707;
   border: 2px solid #492202;
