@@ -24,7 +24,7 @@
 
 <script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script> 
-<link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Permanent+Marker" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Dancing+Script|Playfair+Display" rel="stylesheet">
 
 </head>
 <body>
@@ -34,7 +34,7 @@
     <div class="col-sm-3"><img src="assets/images/NPSlogo.png" width="100" class="logo" alt="nps logo"></div>
     <div class="col-sm-6">
     
-        <h1 id="title">NPS Connect</h1>
+        <h8>NPS Connect</h1>
        
 <div class="col-sm-3"></div>
 
@@ -55,26 +55,10 @@
 <div class="col-sm-3"></div>
 <div class="col-sm-6">
                     
-<iframe width="550px;" height="325px;"
-frameborder="0" style="border:0"
- src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY
-  &q=Duke+Gardens,Durham+NC" allowfullscreen>
-</iframe>
+<div id="insertGooglehere"></div>
+</div>
+
                 
-    <nav class="navbar navbar-light bg-clear">
-    <a class="navbar-brand" href="#"></a></nav>
-                                                          
-   <nav class="navbar navbar-light bg-light">
-   <form class="form-inline">
-   <input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="Type Park Here" aria-label="Search">
-   <button class="btn btn-outline-success my-2 my-sm-0" id="submitBtn" type="submit">Search
-   </button></form></nav>
-    
-    <button class="styled" type="submit" id="pickRandomPark"> Pick A Random Park</button>
-    <br></div></div></div> 
-    <HR>   
-
-
     <div class="container">
     <div class="row">
     <div class="col-sm-3"></div>
@@ -206,55 +190,76 @@ frameborder="0" style="border:0"
     <br></div></div></div>                
     <HR>
 
-   
-            <div class="container">   
+        <div class="container">
             <div class="row">
-            <div class="col-sm-3"></div>   
-            <div class="col-sm-8">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
 
-            <div class="grid" data-packery='{ "itemSelector": ".grid-item" }'>
+ <nav class="navbar navbar-light bg-clear">
+ <a class="navbar-brand" href="#"></a></nav>
+                                                                  
+ <nav class="navbar navbar-light bg-light">
+ <form class="form-inline">
+ <input class="form-control mr-sm-2" id="keywordSearchInput" type="search" placeholder="Type Park Here" aria-label="Search">
+ <button class="btn btn-outline-success my-2 my-sm-0" id="keywordSearchBtn" type="submit">Search Google Maps
+ </button></form></nav>
+            
+  <button class="styled" type="submit" id="pickRandomPark"> Pick A Random Park</button>
+  <br>
+  <h9>Adventure Right Around the Corner...</h2> 
+  </div></div></div>
+ 
 
-            <div class="grid-item"><img class="block2"  src="assets/images/search.png">
-            <p class="menuText">Search For A Park</p>
-            </div>
 
-            <div class="grid-item moveMenuText"><img src="assets/images/parkinfo.png">
-            <p class="menuText">Park Information</p>
-            </div>
 
-            <div class="grid-item moveMenuText"><img src="assets/images/events.png">
-                <p class="menuText">Events</p>
-                </div>
+<div class="container">   
+<div class="row">
+<div class="col-sm-3"></div>
+  
+<div class="col-sm-8">
 
-            <div class="grid-item moveMenuText"><img src="assets/images/hotels.png">
-                <p class="menuText">Hotels</p>
-                </div>
+<div class="grid" data-packery='{ "itemSelector": ".grid-item" }'>
 
-            <div class="grid-item moveMenuText"><img src="assets/images/gas.png">
-                <p class="menuText">Gas</p>
-                </div>
+<div class="grid-item"><img class="block2"  src="assets/images/search.png">
+<p class="menuText">Search For A Park</p>
+</div>
+
+<div class="grid-item moveMenuText"><img src="assets/images/parkinfo.png">
+<p class="menuText">Park Information</p>
+</div>
+
+<div class="grid-item moveMenuText"><img src="assets/images/events.png">
+<p class="menuText">Events</p>
+</div>
+
+<div class="grid-item moveMenuText"><img src="assets/images/hotels.png">
+<p class="menuText">Hotels</p>
+ </div>
+
+ <div class="grid-item moveMenuText"><img src="assets/images/gas.png">
+ <p class="menuText">Gas</p>
+</div>
         
-            <div class="grid-item moveMenuText"><img src="assets/images/restaurants.png">
-                <p class="menuText">Restaurants</p>
-                </div>
+<div class="grid-item moveMenuText"><img src="assets/images/restaurants.png">
+<p class="menuText">Restaurants</p>
+</div>
 
-            <div class="grid-item moveMenuText"><img src="assets/images/convience_st.png">
-                <p class="menuText">Convience Stores</p>
-                </div>
+<div class="grid-item moveMenuText"><img src="assets/images/convience_st.png">
+<p class="menuText">Convience Stores</p>
+</div>
 
-            <div class="grid-item moveMenuText"><img src="assets/images/supplies1.png">
-                <p class="menuText">Supplies</p>
-                </div>
+<div class="grid-item moveMenuText"><img src="assets/images/supplies1.png">
+<p class="menuText">Supplies</p>
+</div>
            
-            <div class="grid-item moveMenuText"><img src="assets/images/share.png">
-            <p class="menuText">Social Media Share</p>
-            </div>
+<div class="grid-item moveMenuText"><img src="assets/images/share.png">
+<p class="menuText">Social Media Share</p>
+</div>
             
 <div class="col-sm-3"></div>
                
 <br></div></div></div>
 <HR>                 
-
 
 <div class="row">
 <div class="col-sm-3"></div>
@@ -272,16 +277,6 @@ frameborder="0" style="border:0"
             <input type="email" id="email" placeholder="Email" class="form-control">
             </div>
            
-        <div class="form-group">
-            <label for="password1" class="col-sm-3 control-label">Password</label>
-            <input type="password" id="password1" placeholder="Password" class="form-control">
-            </div>
-         
-        <div class="form-group">
-          <label for="password2" class="col-sm-3 control-label">Re-enter Password</label>
-            <input type="password" id="password2" placeholder="Password" class="form-control">
-            </div>
-         
         <div class="form-group">
             <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
             <input type="date" id="birthDate" class="form-control">
