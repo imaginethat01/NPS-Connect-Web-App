@@ -112,47 +112,6 @@ $(document).ready(function () {
   });
 
 
-
-          var config = {
-            apiKey: "AIzaSyCKZfkPIfQAelCisqxhuniO9zhmCRn0VOw",
-            authDomain: "contactformdb.firebaseapp.com",
-            databaseURL: "https://contactformdb.firebaseio.com",
-            projectId: "contactformdb",
-            storageBucket: "",
-            messagingSenderId: "691050789317"
-          };
-          firebase.initializeApp(config);
-          
-          
-              // Create a variable to reference the database.
-              var database = firebase.database();
-              // Initial Values
-              var name = "";
-              var email = "";
-              var password1 = "";
-              var password2 = "";
-              var birthDate = "";
-              // Capture Button Click
-              $("#submitGoFire").on("click", function(event) {
-                event.preventDefault();
-                // Grabbed values from text boxes
-                name = $("#firstName").val().trim();
-                email = $("#email").val().trim();
-                password1 = $("#password1").val().trim();
-                password2 = $("#password2").val().trim();
-                birthDate = $("#birthDate").val().trim(); 
-                // Code for handling the push
-                database.ref().push({
-                  name: name,
-                  email: email,
-                  password1: password1,
-                  password2: password2,
-                  birthDate: birthDate,
-                  dateAdded: firebase.database.ServerValue.TIMESTAMP
-                });
-              });
-
-
               $("#browseStateBtn").on("click", function (event) {
                 //prevents on click from resorting to default state
                 event.preventDefault();
@@ -203,3 +162,14 @@ $("#keywordSearchBtn").on("click", function (event) {
     console.log(place);
      $('#insertGooglehere').append(' <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >'); 
     });
+
+    var modal = document.getElementById('id01'); 
+        
+        
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    
+    }
+    

@@ -35,9 +35,9 @@
     <div class="col-sm-6">
     
         <h8>NPS Connect</h8>
-       
-<div class="col-sm-3"></div>
-
+        
+<div class="col-sm-3"><button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'">Login</button></div>
+<br>
 </div></div></div> 
 
 <div class="container">
@@ -64,7 +64,7 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
     <div class="form-group">
-    <label for="parks" class="col-sm-6 control-label" style="text-align: center;">Browse Parks</label>    
+    <label for="parks" class="col-sm-6 control-label" style="text-align: center;"><h9>Browse Parks</h9></label>    
                             
        <select id="browseParkOption" class="form-control">
         <option value="acad">Acadia</option>
@@ -128,9 +128,9 @@
         <option value="yose">Yosemite *</option>
         <option value="zion">Zion</option>
                         </select>
+                        <br>
                         <button class="styled" type="submit" id="browseParkBtn">Select this park</button>
                         </div>
-
                         <select id="browseStateOption" class="form-control">
                             
                                     <option value="AL">Alabama</option>
@@ -185,6 +185,7 @@
                                     <option value="WI">Wisconsin</option>
                                     <option value="WY">Wyoming</option>
     </select>
+    <br>
     <button class="styled" type="submit" id="browseStateBtn">Search By State</button>
 
     <br></div></div></div>                
@@ -201,9 +202,9 @@
  <nav class="navbar navbar-light bg-light">
  <form class="form-inline">
  <input class="form-control mr-sm-2" id="keywordSearchInput" type="search" placeholder="Type Park Here" aria-label="Search">
+ <br>
  <button class="btn btn-outline-success my-2 my-sm-0" id="keywordSearchBtn" type="submit">Search Google Maps
- </button></form></nav>
-            
+ </button></form></nav><br>         
   <button class="styled" type="submit" id="pickRandomPark"> Pick A Random Park</button>
   <br>
   <h9>Adventure Right Around the Corner...</h9> 
@@ -234,7 +235,7 @@
 
 <div class="grid-item moveMenuText"><img src="assets/images/hotels.png">
 <p class="menuText">Hotels</p>
- </div>
+</div>
 
  <div class="grid-item moveMenuText"><img src="assets/images/gas.png">
  <p class="menuText">Gas</p>
@@ -258,55 +259,62 @@
             
 <div class="col-sm-3"></div>
                
-<br></div></div></div>
+<br></div></div>
 <HR>                 
 
-<div class="row">
-<div class="col-sm-3"></div>
-<div class="col-sm-6">
-
-<form class="form-horizontal" role="form" id="formWrapper">
-
-        <div class="form-group">
-            <label for="firstName" class="col-sm-3 control-label">Full Name</label>
-            <input type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
-            </div>
-          
-        <div class="form-group">
-            <label for="email" class="col-sm-3 control-label">Email</label>
-            <input type="email" id="email" placeholder="Email" class="form-control">
-            </div>
-           
-        <div class="form-group">
-            <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
-            <input type="date" id="birthDate" class="form-control">
-            </div>
-         
-         </form></div></div>
-
-        <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
-        <div class="form-group">
-        
-        <input type="checkbox"> I accept <a href="#">terms</a>
-        <button type="submit" id="submitGoFire" class="btn btn-primary btn-block">Register</button>
-        
-        <br></div></div></div>
-        <HR>    
-
-        
 <!-- FOOTER -->
 <div class="container">
   <div class="row">
   <div class="col-sm-3"></div>    
   <div class="col-sm-6">
   <footer id="footer">
-  &copy; 2018 Team JSON & The VARgonauts UNC Coding Bootcamp
+  &copy; <p>2018 Team JSON & The VARgonauts UNC Coding Bootcamp</p>
  </footer>
 
  </div></div></div>
 
-<script src="assets/javascript/script.js"></script>
+
+
+
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" 
+  class="close" title="Close Modal">&times;</span>
+
+  <div c1ass="modal-content animate" action="/action_page.php">
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-3"></div> 
+  <div class="col-sm-6">
+   
+    <div class="imgcontainer">
+      <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/200321_1023262747179_9641_n.jpg?_nc_cat=0&oh=c1017abb06a5af031f5a7c377fb7d309&oe=5B61E81A" width="192px" height="192px" style="text-align: center;"  alt="Avatar" class="avatar">
+    </div>
+    <h7>Welcome to NPS Connect!</h7>
+    <form>
+      <div class="form-group">
+        <label for="email"><h7>Your Email Address:</h7></label>
+        <input type="email" class="form-control" id="email">
+      </div>
+      <div class="form-group">
+      <label for="name"><h6>Your Name:</h6></label>
+      <input type="text" class="form-control" id="name">
+    </div>
+      <div class="form-group">
+        <label for="pwd1"><h6>Enter Your Password:</h6></label>
+        <input type="password" class="form-control" id="pwd1">
+      </div>
+      <div class="form-group">
+      <label for="pwd2"><h6>Confirm Your Password:</h6></label>
+      <input type="password" class="form-control" id="pwd2">
+    </div>
+    <button type="submit" id="submitGoFire" class="btn btn-primary btn-block">Sign up Now!</button>
+    </form>
+    
+    </div></div></div></div></div>
+  
+    <script src="assets/javascript/script.js"></script>
+    <script src="assets/javascript/dbif.js"></script>
 </body>
 </html>

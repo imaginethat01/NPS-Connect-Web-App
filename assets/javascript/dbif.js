@@ -1,25 +1,11 @@
-// dbif.js
-
-// Need this in index.html
-// <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-
-/* ASSUMPTIONS
- ========================================
-- Users will wrap functions and data in objects
-- Objects may be nested more than one layer deep
-- Data structures cannot be pre-positioned in the dB
-- DB will use user object properties as keys
-- Business logic has startup sequence to initialize DB
-*/
-
-/* CAVEATS
-=============================================
-- functions and parameters are best guesses and subject to change!!!
-*/
+$(document).ready(function () {
 
 const dbInterface = {
   // provides single interface to Firebase
   database: '',
+  name: '',
+  email: '',
+  password: '',
   initializeDB: function () {
     // initializes database at start of planning session
     console.log('in dbInterface.initializeDB()');
@@ -33,57 +19,118 @@ const dbInterface = {
     };
     firebase.initializeApp(config);
     this.database = firebase.database();
-    // zeros data in DB
-    this.database.ref().set({
-      // intializes data elements in DB if any are required
-      // TODO: these need to be specified and added in
+  },
+  createNewUser(userName, userEmail, userPassword) {
+    // TODO (future) return success or failure
+    console.log('in dbInterface.createNewUser');
+    const processedUserEmail = this.processUserEmail(userEmail);
+    // console.log('processedUserEmail is ' + processedUserEmail);
+    this.database.ref().child(processedUserEmail).set({
+      name: userName,
+      password: userPassword,
+      dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
   },
-  initializeDataElements: function() {
-    // this retrieves data initially and updates whenever it changes
-    // TODO: add parameters users must send
-    console.log('in dbInterface.initializeDataElements()');
-    this.database.ref().on("value", function(snapshot) {
-      // TODO link data elements into globals that all can see
+  processUserEmail: function(userEmail) {
+    console.log('in processUserEmail');
+    // Replaces '.' with '-dot-' in email address
+    // needed to make legal key in Firebase
+    return userEmail.split('.').join('-dot-');
+  },
+  // methods below will be built if they are required and time permits 
+  createNewPlan: function(userEmail, newPlan) {
+    // TODO
+    // stores a newly created plan in the database
+    // plan is a JSON object. Only one plan stored at a time
+  },
+  updatePlan: function(userEmail, plan) {
+    // TODO
+    // overwrites existly plan with updated content
+    // plan is a JSON object
+  },
+  deletePlan: function(userEmail) {
+    // TODO
+    // returns 'success' if successful or 'failed' if not
+  },
+  createNewMemory: function(userEmail, newMemory) {
+    // TODO if required
+    // stores a newly created JSON object in the database to save memories of trip
+    // Only one 'memory' is stored at a time
+  },
+  updateMemory: function(userEmail, memory) {
+    // TODO if required
+    // overwrites existly memory with updated content
+    // memory is a JSON object
+  },
+  deleteMemory: function(userEmail) {
+    // TODO if required
+    // returns 'success' if successful or 'failed' if not
+  }
+}
 
+const checkPassword = (email, password) => {
+  // Authorizes access to NPS Connect as a user
+    console.log('in checkPassword');
+    let storedPassword;
+    const processedUserEmail = dbInterface.processUserEmail(email);
+    console.log('processedUserEmail is: ' + processedUserEmail);
+    // retrieve password using email as key
+    dbInterface.database.ref().child(processedUserEmail).on("value", function(snapshot) {
+      setTimeout(() => {
+        if (snapshot.val() === null) {
+          console.log('no such email in DB');
+          promptForCorrectEmail();
+        }
+        else {
+          storedPassword = snapshot.val().password;
+          console.log('stored password is ' + storedPassword);
+          if (password === storedPassword ) {
+            console.log('password is good');
+            clearIt();
+            welcomeUser();
+            setTimeout(() => {
+              clearIt();
+            }, 2000);
+          } else {
+            console.log('password is NO good');
+            promptForCorrectPassword();
+          }
+        }
+      }, 1000);
     }, function(errorObject) {
       console.log("The read failed: " + errorObject.code);
     });
-  },
-  createDBObject: function(object) {
-    console.log('in dbInterface.createDBObject()');
-    // creates new entity in dB to represent object
-    // TODO: use .push() method to do this
-    // returns entityID from Firebase
-    const entityID = '12345abcde';
-    // DUMMY DATA!!!
-    return entityID;
-  },
-  retrieveDBObject: function(entityID, requester) {
-    // returns an entire object from the DB
-    console.log('in dbInterface.retrieveDBObject()');
-    // requester is optional and maybe not needed at all
-    // DUMMY DATA!!! can be filled in as needed
-    return {};
-  },
-  updateDBObject: function(entityID, updatedObject) {
-    // updates entire object in DB
-    console.log('in dbInterface.updateDBObject()');
-    // uses .set()
-    // no return value unless needed
-  }, 
-  deleteDBObject: function(entityID) {
-    // deleetes entire object from DB
-    console.log('in dbInterface.deleteDBObject()');
-    // implemented only if needed
-    // no return value unless needed
-  },
-  setDataElement: function(entityID, key, value) {
-    // updates single object prorperty vaue in database
-    console.log('in dbInterface.setDataElement()');
-    console.log(player, key, value);
-    // NOTE the [] around the 'key' variable!
-    this.database.ref().child(player).update({[key]: value});
-    console.log('set a value in the DB');
+}
+
+const captureProfileData = (e) => {
+ $("#submitGoFire").on("click", function(event) {
+  event.preventDefault();
+  // Grabbed values from text boxes
+  let email = $("#email").val().trim();
+  let name = $("#name").val().trim();
+  let password1 = $("#pwd1").val().trim();
+  let password2 = $("#pwd2").val().trim();
+  console.log(email, name, password1, password2);
+  const validPassword = validatePassword(password1, password2);
+  if (validPassword) {
+    console.log('passwords match');
+    dbInterface.createNewUser(name, email, password1);
+    return true;
+  } else {
+    console.log('passwords do not match');
+    return false;
+  }
+});
+
+const validatePassword = (password1, password2) => {
+  console.log('in validatePassword');
+    if (password1 === password2) {
+      console.log ('password is valid');
+      return true;
+  } else {
+    console.log('password is NOT valid');
+    return false;
   }
 }
+
+}})

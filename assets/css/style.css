@@ -6,6 +6,9 @@ body {
   max-width: 100%;
 }
 
+p {font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px; }
+
 .navbar-brand #title{
   display: inline-block;
   text-align: left;
@@ -40,12 +43,38 @@ h8 {
   text-shadow: 1.5px 1.5px rgb(88, 32, 0);
 }
 
+h7 {
+  text-align: center;
+  font-family: 'Black Han Sans', sans-serif;
+   font-size: 2.0em;
+   color: white;
+   margin-top: 30px;
+   margin-bottom: 30px;
+   margin-left: 30px;
+   text-shadow: 1.5px 1.5px rgb(88, 32, 0);
+ }
+
+
+ h6 {
+  text-align: center;
+  font-family: 'Black Han Sans', sans-serif;
+   font-size: 1.5em;
+   color: linen;
+   margin-top: 30px;
+   margin-bottom: 30px;
+   margin-left: 30px;
+   text-shadow: 1.5px 1.5px rgb(88, 32, 0);
+ }
+
 
 h9 {
   text-align: center;
   font-family: 'Dancing Script', cursive;
   font-size: 2.5em;
-  color: white;                                              }
+  font-weight: bolder;
+  color: rgb(13, 90, 13); 
+  text-shadow: 2px 1px rgb(235, 229, 210);
+}                                            
 
 .moveMenuText {
   position: relative;
@@ -53,7 +82,7 @@ h9 {
 
 .menuText {
   position: absolute;
-  z-index: 100;
+  z-index: 1;
   top: 20px;
   font-family: 'Permanent Marker', cursive;
   color: white;
@@ -109,7 +138,79 @@ h9 {
       background: #333; 
   }
 
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: scroll; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+ 
+}
 
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 25px;
+  top: 0; 
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+
+.styled {
+  background-color: #a87c57; 
+  padding: 12px 28px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  width: 225px;
+  height: 50px;
+}
+
+.styled:hover {
+  background-color: rgb(182, 132, 67); 
+  color: white; 
+
+}
 
 /* font-family: 'Roboto', sans-serif;
 font-family: 'Playfair Display', serif; */
