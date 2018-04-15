@@ -203,13 +203,35 @@ h9 {
   transition-duration: 0.4s;
   width: 225px;
   height: 50px;
+  color: snow;
+  border-radius: 25px;
+  font-weight:bolder; 
 }
+
+.styled1 { background-color: rgb(131, 57, 27);
+           padding: 12px 28px; 
+           position: relative; left: 12%;
+           border-radius: 25px;
+           width: 200px;
+           height: 50px;
+           color: snow;
+           -webkit-transition-duration: 0.4s; /* Safari */
+           transition-duration: 0.4s;
+           font-weight: bolder; }
 
 .styled:hover {
   background-color: rgb(182, 132, 67); 
   color: white; 
 
 }
+
+.styled1:hover {
+  background-color: rgb(182, 132, 67); 
+  color: white; 
+
+}
+
+
 
 /* font-family: 'Roboto', sans-serif;
 font-family: 'Playfair Display', serif; */
