@@ -34,11 +34,14 @@
     <div class="col-sm-3"><img src="assets/images/NPSlogo.png" width="100" class="logo" alt="nps logo"></div>
     <div class="col-sm-6">
     
-        <h8>NPS Connect</h8>
+    <h8>NPS Connect</h8>
         
-<div class="col-sm-3"><button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'">Login</button></div>
-<br>
-</div></div></div> 
+<div class="col-sm-3"><button class="btn btn-primary"
+onclick="document.getElementById('id01').style.display='block'" 
+style="background-color: rgb(131, 57, 27); 
+position: relative; left: 12%;">Conservation Info : </button></div>
+
+<br></div></div></div> 
 
 <div class="container">
 <div class="row">
@@ -48,7 +51,6 @@
 <div id="insertParkInfoHere"></div>
 <br></div></div></div>
 <HR> 
-
 
 <div class="container">
 <div class="row">
@@ -184,18 +186,17 @@
                                     <option value="WV">West Virginia</option>
                                     <option value="WI">Wisconsin</option>
                                     <option value="WY">Wyoming</option>
-    </select>
-    <br>
+                                    </select><br>
+    
     <button class="styled" type="submit" id="browseStateBtn">Search By State</button>
     <button class="styled" style="position: relative; left: 9%;" type="submit" id="pickRandomPark"> Pick A Random Park</button>
 
     <br></div></div></div>                
     <HR>
-
         <div class="container">
-            <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
+        <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
 
  <nav class="navbar navbar-light bg-clear">
  <a class="navbar-brand" href="#"></a></nav>
@@ -211,9 +212,6 @@
   <h9>Adventure Right Around the Corner...</h9> 
   </div></div></div>
  
-
-
-
 <div class="container">   
 <div class="row">
 <div class="col-sm-3"></div>
@@ -260,7 +258,7 @@
             
 <div class="col-sm-3"></div>
                
-<br></div></div>
+<br></div></div></div>
 <HR>                 
 
 <!-- FOOTER -->
@@ -280,7 +278,7 @@
 
 <!-- The Modal -->
 <div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'" 
+<span onclick="document.getElementById('id01').style.display='none'" 
   class="close" title="Close Modal">&times;</span>
 
   <div c1ass="modal-content animate" action="/action_page.php">
@@ -293,29 +291,29 @@
     <img src="https://www.w3schools.com/howto/img_avatar.png" width="150px" height="150px" style="text-align: center;"  alt="Avatar" class="avatar">
     </div>
     <h7>Welcome to NPS Connect!</h7>
-    <form>
+
+      <form>
       <div class="form-group">
-        <label for="email"><h7>Your Email Address:</h7></label>
-        <input type="email" class="form-control" id="email">
-      </div>
-      <div class="form-group">
-      <label for="name"><h6>Your Name:</h6></label>
+      <h6>Your Name:</h6>
       <input type="text" class="form-control" id="name">
-    </div>
-      <div class="form-group">
-        <label for="pwd1"><h6>Enter Your Password:</h6></label>
-        <input type="password" class="form-control" id="pwd1">
       </div>
+
       <div class="form-group">
-      <label for="pwd2"><h6>Confirm Your Password:</h6></label>
-      <input type="password" class="form-control" id="pwd2">
-    </div>
-    <button type="submit" id="submitGoFire" class="btn btn-primary btn-block">Sign up Now!</button>
+      <h6>Your E-mail address</h6>
+      <input type="email" class="form-control" id="email">
+      </div>
+
+        <div class="form-group">
+        <h6>Enter Your Password: </h6> 
+        <input type="date" class="form-control" id="birthDate">
+        </div>
+     
+    <button type="submit" id="submitGoFire" onclick="document.getElementById('id01').style.display='none'" class="btn btn-primary btn-block">Sign up Now!</button>
     </form>
     
-    </div></div></div></div></div>
+    </div></div></div></div>
   
     <script src="assets/javascript/script.js"></script>
-    <script src="assets/javascript/dbif.js"></script>
+   
 </body>
 </html>

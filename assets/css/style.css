@@ -196,7 +196,7 @@ h9 {
 
 
 .styled {
-  background-color: #a87c57;
+  background-color: rgb(131, 57, 27);
   margin: 10px; 
   padding: 12px 28px;
   -webkit-transition-duration: 0.4s; /* Safari */

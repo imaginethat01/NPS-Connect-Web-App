@@ -173,3 +173,36 @@ $("#keywordSearchBtn").on("click", function (event) {
     
     }
     
+    var config = {
+      apiKey: "AIzaSyCKZfkPIfQAelCisqxhuniO9zhmCRn0VOw",
+      authDomain: "contactformdb.firebaseapp.com",
+      databaseURL: "https://contactformdb.firebaseio.com",
+      projectId: "contactformdb",
+      storageBucket: "",
+      messagingSenderId: "691050789317"
+    };
+    firebase.initializeApp(config);
+    
+    
+        // Create a variable to reference the database.
+        var database = firebase.database();
+        // Initial Values
+        var name = "";
+        var email = "";
+        var birthDate = "";
+        // Capture Button Click
+        $("#submitGoFire").on("click", function(event) {
+          event.preventDefault();
+          // Grabbed values from text boxes
+          name = $("#name").val().trim();
+          email = $("#email").val().trim();
+          birthDate = $("#birthDate").val().trim(); 
+          // Code for handling the push
+          database.ref().push({
+            name: name,
+            email: email,
+            birthDate: birthDate,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+          
+          });
+        });
