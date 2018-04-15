@@ -2,6 +2,7 @@ body {
   background-image: url("http://eskipaper.com/images/amazing-mountain-scenery-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   max-height: 100%;
   max-width: 100%;
 }
@@ -232,6 +233,34 @@ h9 {
 }
 
 
+
+.gutter-sizer { width: 4.5%; }
+.grid-sizer { width: 50%; }
+
+
+.grid-item {
+  width: 215px;
+  height: 215px;
+ 
+  border-radius: 25px;
+ float:left;
+}
+
+
+.grid-item.ui-draggable-dragging,
+.grid-item.is-positioning-post-drag {
+  background-color: #7bffff;
+  z-index: 1;
+}
+
+.packery-drop-placeholder {
+  border-radius: 25px;
+  outline: 3px dashed #7bffff;
+  outline-offset: -6px;
+  -webkit-transition: -webkit-transform 0.2s;
+          transition: transform 0.2s;
+  
+}
 
 /* font-family: 'Roboto', sans-serif;
 font-family: 'Playfair Display', serif; */
