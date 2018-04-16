@@ -59,12 +59,13 @@ h7 {
 
  p3 { 
     float: right;
+    
      font-family: 'Black Han Sans', sans-serif;
      font-size: 1.0em;
      color: linen;
      position: relative;
-      right: 10%;
-                      
+     right: 10%;
+     text-shadow: 1.5px 1.5px rgb(221, 117, 57)                 
 }
 
  h6 {
@@ -85,7 +86,7 @@ h9 {
   font-size: 2.5em;
   font-weight: bolder;
   color: rgb(11, 110, 11); 
-  text-shadow: 2px 1px rgb(221, 117, 57)
+  text-shadow: 2px 1px rgb(36, 21, 12)
 }                                            
 
 .moveMenuText {
@@ -280,17 +281,19 @@ h9 {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: rgb(255, 255, 255);
+  background-color: #c5a56d;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
+  opacity: 0.7;
+ 
 }
 
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #070707;
   display: block;
   transition: 0.3s;
   font-weight: bolder;
