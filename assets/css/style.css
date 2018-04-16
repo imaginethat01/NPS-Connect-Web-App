@@ -5,6 +5,7 @@ body {
   background-attachment: fixed;
   max-height: 100%;
   max-width: 100%;
+  
 }
 
 p {font-family: Georgia, 'Times New Roman', Times, serif;
@@ -59,7 +60,7 @@ h7 {
 
  p3 { 
     float: right;
-    
+
      font-family: 'Black Han Sans', sans-serif;
      font-size: 1.0em;
      color: linen;
@@ -85,9 +86,9 @@ h9 {
   font-family: 'Dancing Script', cursive;
   font-size: 2.5em;
   font-weight: bolder;
-  color: rgb(11, 110, 11); 
+  color: #7bffff;
   text-shadow: 2px 1px rgb(36, 21, 12)
-}                                            
+                                         }                                            
 
 .moveMenuText {
   position: relative;
@@ -318,8 +319,8 @@ h9 {
 
 #navbtn { 
 position: relative; 
-right: 2%;
-color: rgb(255, 255, 255);
+left: 12%;
+color: white;
 }
 
 /* font-family: 'Roboto', sans-serif;
