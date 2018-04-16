@@ -163,6 +163,15 @@ $("#keywordSearchBtn").on("click", function (event) {
      $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >'); 
     });
 
+
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+  }
+
     var modal = document.getElementById('id01'); 
         
         

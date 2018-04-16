@@ -31,11 +31,13 @@
 
     <div class="container">
     <div class="row">
-    <div class="col-sm-3"><img src="assets/images/NPSlogo.png" width="100" class="logo" alt="nps logo"></div>
-    <div class="col-sm-6">
+    <div class="col-sm-3"> 
+    <img src="assets/images/NPSlogo.png" width="100" class="logo" alt="nps logo">
+    </div>
     
+    <div class="col-sm-6">
     <h8>NPS Connect</h8>
-        
+
 <div class="col-sm-3"><button class="styled1"
 onclick="document.getElementById('id01').style.display='block'">Conservation Info</button></div>
 
@@ -43,8 +45,18 @@ onclick="document.getElementById('id01').style.display='block'">Conservation Inf
 
 <div class="container">
 <div class="row">
-<div class="col-sm-3"></div>
+<div class="col-sm-3"><div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Share a Memory</a>
+        <a href="#">NPS Events</a>
+        <a href="#">Trail Maps</a>
+        <a href="#">NPS</a>
+        </div>
+      
+<span id="navbtn" style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; <h5>Explore NPS</h5></span></div>
 <div class="col-sm-6">
+
+  
         
 <div id="insertParkInfoHere"></div>
 <br></div></div></div>
@@ -307,8 +319,8 @@ onclick="document.getElementById('id01').style.display='block'">Conservation Inf
     </form>
     
     </div></div></div></div>
-  
-    <script src="assets/javascript/script.js"></script>
+    
+<script src="assets/javascript/script.js"></script>
    
 </body>
 </html>
