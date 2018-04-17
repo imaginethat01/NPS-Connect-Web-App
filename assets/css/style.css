@@ -247,9 +247,9 @@ h9 {
 
 
 
-.gutter-sizer { width: 3.0%; }
-.grid-sizer { width: 48%;
-                height: 48%; }
+.gutter-sizer { width: 1.0%; }
+.grid-sizer { width: 40%;
+                height: 40%; }
 
 
 .grid-item {
