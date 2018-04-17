@@ -1,13 +1,13 @@
 
 $(document).ready(function () {
-  //Click Handler for Random Park Search
+
   $("#pickRandomPark").on("click", function (event) {
-    console.log("click handler working");
+   
     event.preventDefault();
     $('#insertParkInfoHere').empty();
     // //Pick A Random Number Between 1-60
     var randomSelect = Math.floor(Math.random() * 60);
-    console.log(randomSelect); //number in console
+  
     // //parkCode Array
     var parkCodes = ["acad", "npsa", "arch", "badl", "bibe", "bisc", "blca", "brca", "cany", "care", "cave", "chis", "cong", "crla", "cuva", "deva", "dena", "drto", "ever", "gaar", "jeff", "glac", "glba", "grca", "grta", "grba", "grsa", "grsm", "gumo", "hale", "havo", "hosp", "isro", "jotr", "katm", "kefj", "seki", "kova", "lacl", "lavo", "maca", "meve", "mora", "noca", "olym", "pefo", "pinn", "redw", "romo", "sagu", "shen", "thro", "viis", "voya", "wica", "wrst", "yell", "yose", "zion"];
     console.log(parkCodes);
@@ -17,7 +17,7 @@ $(document).ready(function () {
     // API Query
     var queryQRL = "https://developer.nps.gov/api/v1/parks?parkCode=" + selectedCode + "&api_key=7wQNlZMqMhlH0js2AdSZsiMoge4n3Z0ud2rZVlfW";
     console.log(queryQRL);
-    //  
+ 
     var pickRandom = parkCodes[Math.floor(Math.random() * parkCodes.length)];
     console.log(pickRandom);
    
@@ -36,6 +36,10 @@ $(document).ready(function () {
       $('#insertParkInfoHere').append('<h2>' + "Weather: " + '</h2><span id="responseInfo">' + response.data[0].weatherInfo + '</span>');
     });
   });
+
+
+
+  // 2 of 3 AJAX CALLS / THIS DISPLAYS THE LIST OF SITES PER STATE FROM STATE SELECT HTML 
 
   $("#browseStateBtn").on("click", function (event) {
     event.preventDefault();
@@ -67,6 +71,7 @@ $(document).ready(function () {
   })
   });
 
+  // 3 OF 3 AJAX CALL GRABS PARK FULL NAME FROM OPTION SELECT HTML
 
   $("#browseParkBtn").on("click", function (event) {
     event.preventDefault();
@@ -79,6 +84,7 @@ $(document).ready(function () {
       console.log(response);
 
       var mapRef = response.data[0].fullName
+      console.log(mapRef),
       // forEach to bring up more than 1 park
       $('#insertParkInfoHere').empty();
       $('#insertParkInfoHere').append('<h2 id="responseTitle">' + response.data[0].fullName + '</h2>');
@@ -88,6 +94,40 @@ $(document).ready(function () {
       $('#insertParkInfoHere').append('<h3 id="responseTitle">' + "Weather: " + '</h3><span id="responseInfo">' + response.data[0].weatherInfo + '</span>');
       $('#insertGooglehere').empty();
       $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + mapRef + '" allowfullscreen></iframe >');
+
+      $("#keywordSearchBtn").on("click", function (event) {
+        event.preventDefault();
+        $('#insertGooglehere').empty();
+        var place2 = $('#keywordSearchInput').val().trim() + ' national park';
+        console.log(place);
+        $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place2 + '" allowfullscreen></iframe >'); 
+     });
+     
+     $("#gasBtn").on("click", function (event) {
+           event.preventDefault();
+           $('#insertGooglehere').empty();
+           var place = mapRef + ' national park gas';
+           console.log(place);
+           $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
+     });
+     
+     $("#hotelBtn").on("click", function (event) {
+         event.preventDefault();
+         $('#insertGooglehere').empty();
+         var place = mapRef  + ' national park hotel';
+         console.log(place);
+         $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
+     });
+     
+     $("#restaurantBtn").on("click", function (event) {
+       event.preventDefault();
+       $('#insertGooglehere').empty();
+       var place = mapRef  + ' national park hotel restaurant';
+       console.log(place);
+       $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
+     });
+     
+
     })
   });
   });
@@ -97,10 +137,8 @@ $(document).ready(function () {
        
 // external js: packery.pkgd.js, jquery-ui-draggable.js
 
-// initialize Packery
 var $grid = $('.grid').packery({
-  itemSelector: '.grid-item',
-  // columnWidth helps with drop positioning
+itemSelector: '.grid-item',
   columnWidth: 100
 });
 
@@ -109,38 +147,10 @@ var $items = $grid.find('.grid-item').draggable();
 // bind drag events to Packery
 $grid.packery( 'bindUIDraggableEvents', $items );
 
+// PACKERY AND GMAP BUTTONS -- NEEDS TROUBLESHOOT
 
-$("#keywordSearchBtn").on("click", function (event) {
-   event.preventDefault();
-   $('#insertGooglehere').empty();
-   var place = $('#keywordSearchInput').val().trim() + ' national park';
-   console.log(place);
-   $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >'); 
-});
 
-$("#gasBtn").on("click", function (event) {
-      event.preventDefault();
-      $('#insertGooglehere').empty();
-      var place = $('#browseParkOption').val().trim() + ' national park gas';
-      console.log(place);
-      $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
-});
-
-$("#hotelBtn").on("click", function (event) {
-    event.preventDefault();
-    $('#insertGooglehere').empty();
-    var place = $('#browseParkOption').val().trim() + ' national park hotel';
-    console.log(place);
-    $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
-});
-
-$("#restaurantBtn").on("click", function (event) {
-  event.preventDefault();
-  $('#insertGooglehere').empty();
-  var place = $('#browseParkOption').val().trim() + ' national park hotel restaurant';
-  console.log(place);
-  $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
-});
+// SIDE NAV CODE
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px"; }
@@ -148,10 +158,42 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0"; } 
 
+
+
+// SLIDE SHOW CODE 
+var slideIndex = 0;
+showSlides();
+
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+     slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+
+  setTimeout(showSlides, 3000); // Change image every 2 seconds
+}
+  
+
+
+  // MODAl ELEMENT CODE
+
 var modal = document.getElementById('id01'); 
   window.onclick = function(event) {
   if (event.target == modal) {
   modal.style.display = "none"; } }
+
+
+  // FIREBASE CONFIG CODE 
     
     var config = {
       apiKey: "AIzaSyCKZfkPIfQAelCisqxhuniO9zhmCRn0VOw",
