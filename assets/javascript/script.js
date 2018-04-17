@@ -38,69 +38,47 @@ $(document).ready(function () {
   });
 
   $("#browseStateBtn").on("click", function (event) {
-    //prevents on click from resorting to default state
     event.preventDefault();
-    //get value from state dropdown
-    // var selectedState = $('#browseStateOption option:selected.val()').text();
     var selectedState = $('#browseStateOption').val()
     console.log(selectedState);
-    //stateCode object  ---not needed right now
-    // var stateCodeObject = {
-    //   "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansa": "AR", "California": "CA", "Colorado": "CO", "Conneticut": "CT", "Delaware": "DE", "Florida": "FL", "Georgia": "GA", "Hawaii": "HI", "Idaho": "ID", "Illinois": "IL", "Indiana": "IN", "Iowa": "IA", "Kansas": "KS", "Kentucky": "KY", "Louisiana": "LA", "Maine": "ME", "Maryland": "MD", "Massachusetts": "MA", "Michigan": "MI", "Minnesota": "MN", "Mississippi": "MS", "Missouri": "MO", "Montana": "MT", "Nebraska": "NE", "Nevada": "NV", "New Hampshire": "NH", "New Jersey": "NJ", "New Mexico": "NM", "New York": "NY", "North Carolina": "NC", "North Dakota": "ND", "Ohio": "OH", "Oklahoma": "OK", "Oregon": "OR", "Pennsylvania": "PA", "Rhode Island": "RI", "South Carolina": "SC", "South Dakota": "SD", "Tennessee": "TN", "Texas": "TX", "Utah": "UT", "Vermont": "VT", "Virginia": "VA", "Washington": "WA", "West Virginia": "WV", "Wisconson": "WI", "Wyoming": "WY"
-    // }
-    // API QUERY FOR STATE CODES FROM NPS
+ 
     $.ajax({
       url: "https://developer.nps.gov/api/v1/parks?stateCode=" + selectedState + "&api_key=7wQNlZMqMhlH0js2AdSZsiMoge4n3Z0ud2rZVlfW",
       method: "GET"
     }).done(function (response) {
-      $('#insertParkInfoHere').empty();
-
+    $('#insertParkInfoHere').empty();
       console.log("response ", response);
-
       let array = response.data;
       console.log("array ", array);
       array.forEach(obj => {
-        console.log(obj);
+      console.log(obj);
+      console.log('obj ', obj);
 
-        // let index = obj.indexOf(array);
-
-        console.log('obj ', obj);
-
-        let parkObj = {
-          name: obj.fullName,
-          description: obj.description
+      let parkObj = {
+      name: obj.fullName,
+      description: obj.description
         }
-        console.log
         html = 
         `
         <h2 class="respsTitle">${parkObj.name}</h2>
         <h3 class="respsTitle">Description: </h3><span class="respsInfo">'${parkObj.description}</span>
-        `;
-
-
-        $('#insertParkInfoHere').append(html);
-      });
-    })
+        `; $('#insertParkInfoHere').append(html);
+  });
+  })
   });
 
 
   $("#browseParkBtn").on("click", function (event) {
-    //prevents on click from resorting to default state
     event.preventDefault();
-
-    //get value from state dropdown
-    // var selectedState = $('#browseStateOption option:selected.val()').text();
     var selectedPark = $('#browseParkOption').val()
-    // console.log(selectedPark);
-    //CLEAR PARK INFO SECTION
 
-    // API QUERY FOR Park CODES FROM NPS
     $.ajax({
       url: "https://developer.nps.gov/api/v1/parks?parkCode=" + selectedPark + "&api_key=7wQNlZMqMhlH0js2AdSZsiMoge4n3Z0ud2rZVlfW",
       method: "GET"
-    }).done(function (response) {
+  })  .done(function (response) {
       console.log(response);
 
+      var mapRef = response.data[0].fullName
       // forEach to bring up more than 1 park
       $('#insertParkInfoHere').empty();
       $('#insertParkInfoHere').append('<h2 id="responseTitle">' + response.data[0].fullName + '</h2>');
@@ -108,36 +86,13 @@ $(document).ready(function () {
       $('#insertParkInfoHere').append('<h3 id="responseTitle">' + "Latitude & Longitude: " + '</h3><span id="responseInfo">' + response.data[0].latLong + '</span>');
       $('#insertParkInfoHere').append('<h3 id="responseTitle">' + "Description: " + '</h3><span id="responseInfo">' + response.data[0].description + '</span>');
       $('#insertParkInfoHere').append('<h3 id="responseTitle">' + "Weather: " + '</h3><span id="responseInfo">' + response.data[0].weatherInfo + '</span>');
+      $('#insertGooglehere').empty();
+      $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + mapRef + '" allowfullscreen></iframe >');
     })
   });
-
-
-              $("#browseStateBtn").on("click", function (event) {
-                //prevents on click from resorting to default state
-                event.preventDefault();
-                $('#insertParkInfoHere').empty();
-                //get value from state dropdown
-                //var selectedState = $('#browseStateOption option:selected').text();
-              var selectedState = $('#browseStateOption').val()
-                console.log(selectedState);
-               
-               // stateCode object
-                // var stateCodeObject = {
-                //   "Alabama": AL, "Alaska": AK, "Arizona": AZ, "Arkansa": AR, "California": CA, "Colorado": CO, "Conneticut": CT, "Delaware": DE, "Florida": FL, "Georgia": GA, "Hawaii": HI, "Idaho": ID, "Illinois": IL, "Indiana": IN, "Iowa": IA, "Kansas": KS, "Kentucky": KY, "Louisiana": LA, "Maine": ME, "Maryland": MD, "Massachusetts": MA, "Michigan": MI, "Minnesota": MN, "Mississippi": MS, "Missouri": MO, "Montana": MT, "Nebraska": NE, "Nevada": NV, "New Hampshire": NH, "New Jersey": NJ, "New Mexico": NM, "New York": NY, "North Carolina": NC, "North Dakota": ND, "Ohio": OH, "Oklahoma": OK, "Oregon": OR, "Pennsylvania": PA, "Rhode Island": RI, "South Carolina": SC, "South Dakota": SD, "Tennessee": TN, "Texas": TX, "Utah": UT, "Vermont": VT, "Virginia": VA, "Washington": WA, "West Virginia": WV, "Wisconson": WI, "Wyoming": WY
-                // }
+  });
             
-                // // API QUERY FOR STATE CODES FROM NPS
-                 var queryQRL = "https://developer.nps.gov/api/v1/parks?="+selectedState + "&api_key=7wQNlZMqMhlH0js2AdSZsiMoge4n3Z0ud2rZVlfW"
-                // //console.log of API Query
-                 console.log(queryQRL);
-              });
-            });
-            
-            const emptyNPS = () => {
-              console.log('in emptyNPS');
-              $('#insertSearchFormhere').empty();
-              $('#insertParkInfoHere').empty();
-            }
+                                   
 
        
 // external js: packery.pkgd.js, jquery-ui-draggable.js
@@ -156,48 +111,47 @@ $grid.packery( 'bindUIDraggableEvents', $items );
 
 
 $("#keywordSearchBtn").on("click", function (event) {
-     event.preventDefault();
-      $('#insertGooglehere').empty();
-     var place = $('#keywordSearchInput').val().trim() + 'national park';
-    console.log(place);
-     $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >'); 
-    });
+   event.preventDefault();
+   $('#insertGooglehere').empty();
+   var place = $('#keywordSearchInput').val().trim() + ' national park';
+   console.log(place);
+   $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >'); 
+});
 
-
-    $("#gasBtn").on("click", function (event) {
+$("#gasBtn").on("click", function (event) {
       event.preventDefault();
       $('#insertGooglehere').empty();
-      var place = $('#browseParkOption').val().trim() + 'national park gas';
+      var place = $('#browseParkOption').val().trim() + ' national park gas';
       console.log(place);
       $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
-  });
+});
 
- $("#hotelBtn").on("click", function (event) {
+$("#hotelBtn").on("click", function (event) {
     event.preventDefault();
     $('#insertGooglehere').empty();
-    var place = $('#browseParkOption').val().trim() + 'national park hotel';
+    var place = $('#browseParkOption').val().trim() + ' national park hotel';
     console.log(place);
     $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
 });
 
+$("#restaurantBtn").on("click", function (event) {
+  event.preventDefault();
+  $('#insertGooglehere').empty();
+  var place = $('#browseParkOption').val().trim() + ' national park hotel restaurant';
+  console.log(place);
+  $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
+});
 
-  function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-  }
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px"; }
   
-  function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-  }
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0"; } 
 
-    var modal = document.getElementById('id01'); 
-        
-        
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    
-    }
+var modal = document.getElementById('id01'); 
+  window.onclick = function(event) {
+  if (event.target == modal) {
+  modal.style.display = "none"; } }
     
     var config = {
       apiKey: "AIzaSyCKZfkPIfQAelCisqxhuniO9zhmCRn0VOw",
