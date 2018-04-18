@@ -246,6 +246,7 @@ h9 {
 }
 
 
+.grid {position: relative; left: 12.5%;}
 
 .gutter-sizer { width: 1.0%; }
 .grid-sizer { width: 40%;
