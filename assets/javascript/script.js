@@ -11,6 +11,7 @@ $(document).ready(function () {
     // //parkCode Array
     var parkCodes = ["acad", "npsa", "arch", "badl", "bibe", "bisc", "blca", "brca", "cany", "care", "cave", "chis", "cong", "crla", "cuva", "deva", "dena", "drto", "ever", "gaar", "jeff", "glac", "glba", "grca", "grta", "grba", "grsa", "grsm", "gumo", "hale", "havo", "hosp", "isro", "jotr", "katm", "kefj", "seki", "kova", "lacl", "lavo", "maca", "meve", "mora", "noca", "olym", "pefo", "pinn", "redw", "romo", "sagu", "shen", "thro", "viis", "voya", "wica", "wrst", "yell", "yose", "zion"];
     console.log(parkCodes);
+    var mapRef
     //Gives us a Random Park Code
     var selectedCode = parkCodes[randomSelect]
     console.log(selectedCode);
@@ -26,17 +27,54 @@ $(document).ready(function () {
       method: "GET"
     }).done(function (response) {
       console.log('response.data[0]', response.data[0]);
+
       $('#insertParkInfoHere').empty();
-      selectedParkName = response.data[0].fullName;
-      console.log('the random park is: ' + selectedParkName );
+      var mapRef = response.data[0].fullName;
+      console.log('the random park is: ' + mapRef );
       $('#insertParkInfoHere').append('<h2>' + "Name of National Park: " + '</h2><span id="responseInfo">' + response.data[0].fullName + '</span>');
       $('#insertParkInfoHere').append('<h2>' + "Location: " + '</h2><span id="responseInfo">' + response.data[0].states + '</span>');
       $('#insertParkInfoHere').append('<h2>' + "Latitude & Longitude: " + '</h2><span id="responseInfo">' + response.data[0].latLong + '</span>');
       $('#insertParkInfoHere').append('<h2>' + "Description: " + '</h2><span id="responseInfo">' + response.data[0].description + '</span>');
       $('#insertParkInfoHere').append('<h2>' + "Weather: " + '</h2><span id="responseInfo">' + response.data[0].weatherInfo + '</span>');
-    });
-  });
+      $('#insertGooglehere').empty();
+      $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + mapRef + '" allowfullscreen></iframe >');
 
+        
+     $("#gasBtn").on("click", function (event) {
+      event.preventDefault();
+      var place = mapRef + ' gas stations';
+      console.log(place);
+      $('#insertGooglehere').empty();
+      $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
+});
+
+$("#hotelBtn").on("click", function (event) {
+    event.preventDefault();
+    var place = mapRef  + ' hotels';
+    console.log(place);
+    $('#insertGooglehere').empty();
+    $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
+});
+
+$("#restaurantBtn").on("click", function (event) {
+  event.preventDefault();
+  var place = mapRef  + ' restaurants';
+  console.log(place);
+  $('#insertGooglehere').empty();
+  $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
+});
+
+});
+});
+
+
+  $("#keywordSearchBtn").on("click", function (event) {
+    event.preventDefault();
+    var search = $('#keywordSearchInput').val().trim();  
+    console.log(search);
+    $('#insertGooglehere').empty();
+    $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + search +  '" allowfullscreen></iframe >'); 
+ });
 
 
   // 2 of 3 AJAX CALLS / THIS DISPLAYS THE LIST OF SITES PER STATE FROM STATE SELECT HTML 
@@ -95,35 +133,27 @@ $(document).ready(function () {
       $('#insertGooglehere').empty();
       $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + mapRef + '" allowfullscreen></iframe >');
 
-      $("#keywordSearchBtn").on("click", function (event) {
-        event.preventDefault();
-        $('#insertGooglehere').empty();
-        var place2 = $('#keywordSearchInput').val().trim() + ' national park';
-        console.log(place);
-        $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place2 + '" allowfullscreen></iframe >'); 
-     });
-     
      $("#gasBtn").on("click", function (event) {
            event.preventDefault();
-           $('#insertGooglehere').empty();
-           var place = mapRef + ' national park gas';
+           var place = mapRef + ' gas stations';
            console.log(place);
+           $('#insertGooglehere').empty();
            $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
      });
      
      $("#hotelBtn").on("click", function (event) {
          event.preventDefault();
-         $('#insertGooglehere').empty();
-         var place = mapRef  + ' national park hotel';
+         var place = mapRef  + ' hotels';
          console.log(place);
+         $('#insertGooglehere').empty();
          $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
      });
      
      $("#restaurantBtn").on("click", function (event) {
        event.preventDefault();
-       $('#insertGooglehere').empty();
-       var place = mapRef  + ' national park hotel restaurant';
+       var place = mapRef  + ' restaurants';
        console.log(place);
+       $('#insertGooglehere').empty();
        $('#insertGooglehere').append(' <iframe width="550" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESN4bg_XY8N82CwU7ssef7snFR53K1rY&q=' + place + '" allowfullscreen></iframe >')
      });
      
@@ -133,8 +163,6 @@ $(document).ready(function () {
   });
             
                                    
-
-       
 // external js: packery.pkgd.js, jquery-ui-draggable.js
 
 var $grid = $('.grid').packery({
