@@ -417,8 +417,9 @@ slide {vertical-align: middle;
 
 @media only screen and (max-width: 480px) {
 
-  .menubtn {width: 120px;
-              height: 120px; }
+  .menubtn {  width: 120px;
+              height: 120px;
+               }
 
 
               .grid-item {
@@ -427,7 +428,10 @@ slide {vertical-align: middle;
                 height: 122px;
                 }
 
-               
+             
+.grid {   position: relative; right: 12.5%;  }
 
+iframe { max-width:  290px;
+            max-height: 290px;}
 
 } 
