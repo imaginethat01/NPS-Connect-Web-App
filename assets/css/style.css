@@ -60,7 +60,6 @@ h7 {
 
  p3 { 
     float: right;
-
      font-family: 'Black Han Sans', sans-serif;
      font-size: 1.0em;
      color: linen;
@@ -113,6 +112,7 @@ h9 {
   text-align: center;
   margin:auto;
   margin-top: 30px;
+  
 }
 
 #insertParkInfoHere { 
@@ -260,19 +260,20 @@ h9 {
  
 border-radius: 45px;
 float:left;
+z-index: 0;
 }
 
 
 .grid-item.ui-draggable-dragging,
 .grid-item.is-positioning-post-drag {
   background-color: #7bffff;
-  z-index: 1;
+  z-index: 0;
 }
 
 .packery-drop-placeholder {
   border-radius: 25px;
   outline: 3px dashed #7bffff;
-  outline-offset: -6px;
+  outline-offset: -3px;
   -webkit-transition: -webkit-transform 0.2s;
           transition: transform 0.2s;
   
@@ -375,3 +376,58 @@ slide {vertical-align: middle;
   to {opacity: 1}
 }
 
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+
+
+@media only screen and (max-width: 480px) {
+
+  .menubtn {width: 120px;
+              height: 120px; }
+
+
+              .grid-item {
+              
+                width: 122px;
+                height: 122px;
+                }
+
+               
+
+
+} 
