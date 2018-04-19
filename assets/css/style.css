@@ -2,7 +2,7 @@ body {
   background-image: url("http://eskipaper.com/images/amazing-mountain-scenery-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   max-height: 100%;
   max-width: 100%;
   
